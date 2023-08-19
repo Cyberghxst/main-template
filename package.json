@@ -8,9 +8,8 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
-    "discord.js": "^14.11.0",
-    "erine": "2.0.0"
+    "erine": "2.5.0"
   }
 }

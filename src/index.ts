@@ -1,29 +1,28 @@
-// For JavaScript use: const { ErineClient } = require("erine");
-import { ErineClient, Context } from "erine"; // Context is just needed as a type.
-import { GatewayIntentBits } from "discord.js";
+// for CommonJS use: const { Erine, GatewayIntentBits, HelpCommand } = require("erine");
+import {
+    Erine,
+    GatewayIntentBits as I,
+    HelpCommand
+} from "erine";
 
-// Object destructuration.
-const { Guilds, GuildMessages, MessageContent } = GatewayIntentBits;
-
-// New client instance.
-const client = new ErineClient({
+const client = new Erine({
     intents: [
-        Guilds,
-        GuildMessages,
-        MessageContent
+        I.Guilds,
+        I.GuildMessages,
+        I.MessageContent
     ],
-    prefix: "!"
+    helpCommand: HelpCommand, // Enables !help by default.
     /**
-     * prefix can be also a function:
-     * prefix: async function(ctx: Context) {
-     *      return db.get(ctx.guild.id + "_prefix") ?? "!"
+     * you can use a function here too.
+     * prefix(ctx) {
+     *    return "!"
      * }
      */
+    prefix: "!",
+    replyOnEdit: false
 });
 
-// Loading sources
-client.load_commands("src/commands").then(() => console.log("Commands loaded!"));
-client.load_events("src/events").then(() => console.log("Events loaded!"));
-
-// Client login.
-client.login("BOT TOKEN HERE");
+client.load("./src/files")
+    .then(async () => {
+        await client.login("TOKEN");
+    });
