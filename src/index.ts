@@ -11,10 +11,11 @@ const client = new Erine({
         I.GuildMessages,
         I.MessageContent
     ],
+    guildOnly: true,
     helpCommand: HelpCommand, // Enables !help by default.
     /**
-     * you can use a function here too.
-     * prefix(ctx) {
+     * you can use an async function here too.
+     * async prefix (ctx) {
      *    return "!"
      * }
      */

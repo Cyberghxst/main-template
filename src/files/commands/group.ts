@@ -20,8 +20,8 @@ export const data: FileModule = {
             ellipsis: true
         }),
         code: async function(ctx: Context) {
-            const text = ctx.get<string>("text");
-            await ctx.send(`${text}`);
+            const text = ctx.get<string>("text")!;
+            await ctx.send(text);
         }
     })
 }
