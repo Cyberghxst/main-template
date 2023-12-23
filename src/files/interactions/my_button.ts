@@ -1,6 +1,6 @@
-import { ButtonInteraction, FileModule, InteractionBuilder, Interactions } from "erine";
+import { ButtonInteraction, FileModule, InteractionBuilder, Interactions, ModuleData } from "erine";
 
-export const data: FileModule = {
+export const data: ModuleData<InteractionBuilder> = {
     data: new InteractionBuilder({
         name: "my_button", // customID
         type: Interactions.Button

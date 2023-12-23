@@ -1,6 +1,6 @@
-import { ActionRowBuilder, ButtonBuilder, ButtonStyle, CommandBuilder, Context, EmbedBuilder, FileModule } from "erine";
+import { ActionRowBuilder, ButtonBuilder, ButtonStyle, CommandBuilder, Context, EmbedBuilder, ModuleData } from "erine";
 
-export const data: FileModule[] = [{
+export const data: ModuleData<CommandBuilder>[] = [{
     data: new CommandBuilder({
         name: "ping",
         description: "Returns the client websocket latency.",

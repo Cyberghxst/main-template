@@ -1,4 +1,4 @@
-import { Bucket, CommandBuilder, Errors, FileModule, GroupBuilder, ParamsBuilder, Plugins, codeBlock } from "erine"
+import { CommandBuilder, Errors, GroupBuilder, ParamsBuilder, Plugins, codeBlock } from "erine"
 import { inspect } from "util"
 
 export const data = {
@@ -13,14 +13,12 @@ export const data = {
             description: "Evaluates JavaScript code."
         }),
         plugins: [
-            // @ts-ignore Plugins to check ownership
+            // Plugins to check ownership
             Plugins.check(async (ctx) => {
                 if (!ctx.bot.ops.owners?.includes(ctx.author.id))
                     throw new Errors.NotOwner(ctx)
                 else return true
-            }),
-            // Set a 2 seconds cooldown for members.
-            Plugins.cooldown(2, Bucket.Member)
+            })
         ],
         params: new ParamsBuilder()
         .addString({
@@ -48,5 +46,5 @@ export const data = {
             // Send the results.
             await ctx.send(codeBlock(result))
         }
-    })
+    }),
 }

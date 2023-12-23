@@ -1,6 +1,6 @@
-import { CommandBuilder, Context, FileModule, GroupBuilder, ParamsBuilder } from "erine";
+import { CommandBuilder, Context, GroupBuilder, ParamsBuilder } from "erine";
 
-export const data: FileModule = {
+export const data = {
     data: new GroupBuilder({
         name: "fun",
         description: "Fun commands.",
