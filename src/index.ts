@@ -2,7 +2,9 @@
 import {
     Erine,
     GatewayIntentBits as I,
-    HelpCommand
+    HelpCommand,
+    Plugins,
+    Bucket
 } from "erine";
 
 const client = new Erine({
@@ -22,6 +24,11 @@ const client = new Erine({
     prefix: "!",
     replyOnEdit: false
 });
+
+// Global cooldown for commands.
+client.addGlobalPlugins([
+    Plugins.cooldown(2, Bucket.Member)
+])
 
 client.load("./src/files")
     .then(async () => {

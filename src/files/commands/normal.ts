@@ -9,9 +9,10 @@ export const data: ModuleData<CommandBuilder>[] = [{
     }),
     code: async function(ctx: Context) {
         const embed = new EmbedBuilder();
-        embed.setTitle(ctx.bot.user?.username + " latency.");
-        embed.setDescription(ctx.bot.ws.ping + " ms");
-        embed.setColor("Random");
+        embed.setTitle(ctx.bot.user?.username + " latency.")
+        .setDescription(ctx.bot.ws.ping + " ms")
+        .setColor("Random");
+
         await ctx.send({ embeds: [embed] });
     }
 },{
@@ -24,11 +25,13 @@ export const data: ModuleData<CommandBuilder>[] = [{
     code: async function(ctx: Context) {
         const row = new ActionRowBuilder<ButtonBuilder>();
         const button = new ButtonBuilder();
-        button.setCustomId("my_button");
-        button.setLabel("Press me!");
-        button.setStyle(ButtonStyle.Secondary);
-        button.setDisabled(false);
+        button.setCustomId("my_button")
+        .setLabel("Press me!")
+        .setStyle(ButtonStyle.Secondary)
+        .setDisabled(false);
+
         row.setComponents(button);
+
         await ctx.send({
             content: "Here is the button!",
             components: [row]
